@@ -1,18 +1,14 @@
-import email
-from multiprocessing import context
-from turtle import title
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from .decorators import unauthenticated_user
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from mysite.models import UserData,Book, Author, BookInstance, Genre
+from mysite.models import UserData,Book, Author, BookInstance
 from .forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
-from verify_email.email_handler import send_verification_email
 from django.db.models import Q
 
 # Create your views here.

@@ -1,1 +1,1 @@
-web: gunicorn knowledgeArchive.wsgi:application --log-file -
+web: gunicorn knowledgeArchive.wsgi --log-file -

@@ -252,8 +252,6 @@ nav {
     color: #3792e3;
 }
 
-
-
 button {
     margin-left: 20px;
     padding: 9px 25px;
@@ -302,3 +300,12 @@ button:hover {
     font-size: 2rem;
     color: rgb(161, 24, 207);
 }
+
+.borrow_field {
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    resize: vertical;
+}
+

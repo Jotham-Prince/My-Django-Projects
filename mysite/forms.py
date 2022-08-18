@@ -1,5 +1,9 @@
+from dataclasses import field, fields
+from logging import PlaceHolder
+from pyexpat import model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import BookInstance
 from django import forms
 
 # Create your forms here.
@@ -22,4 +26,17 @@ class NewUserForm(UserCreationForm):
 		self.fields['password1'].widget.attrs['placeholder'] = 'Password'
 		self.fields['password2'].widget.attrs['class'] = 'input'
 		self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
+
+class Borrowed_books(forms.ModelForm):
+	class Meta:
+		model = BookInstance
+		fields = ['book','due_back','borrower']
+		widgets = {
+			'due_back' : forms.DateInput(attrs={'placeholder':'Return Date','class':'borrow_field'}),
+		}
+
+	def __init__(self, *args, **kwargs):
+		super(Borrowed_books,self).__init__(*args, **kwargs)
+
+		self.fields['book'].widget.attrs['class'] = 'borrow_field'
 

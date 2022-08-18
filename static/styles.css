@@ -302,3 +302,10 @@ button:hover {
     font-size: 2rem;
     color: rgb(161, 24, 207);
 }
+.borrow_field {
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    resize: vertical;
+}

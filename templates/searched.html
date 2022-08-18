@@ -35,6 +35,11 @@
         </nav>
     </div>
 
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: blue;">{{message}}</p>
+        {% endfor %}
+    {% endif %}
             <div class="wrapper">
                 <h2><strong>You searched for {{searched}}<span></span></strong></h2>
                 <div class="cards">
@@ -42,6 +47,7 @@
                     <figure class="card">
                         <img src="{{book.cover.url}}" />
                         <figcaption>{{book.title}}</figcaption>
+                        <figcaption><a href="{% url 'borrow-book' %}"><button>Borrow</button></a></figcaption>
                     </figure>
                     {% endfor %}
                 </div>

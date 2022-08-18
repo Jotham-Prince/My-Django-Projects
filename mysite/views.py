@@ -1,3 +1,5 @@
+from multiprocessing import context
+from urllib import request
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from .decorators import unauthenticated_user
@@ -5,11 +7,11 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from mysite.models import UserData,Book, Author, BookInstance
-from .forms import NewUserForm
+from .forms import NewUserForm, Borrowed_books
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from .models import BookInstance
 
 # Create your views here.
 
@@ -80,7 +82,7 @@ def aboutUs(request):
 def results(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        books = Book.objects.filter(Q(title__icontains = searched) | Q(summary__icontains = searched))
+        books = Book.objects.filter(title__icontains = searched)
         if books.exists():
             context = {'searched':searched,'books':books}
             return render(request,'searched.html',context)
@@ -96,8 +98,37 @@ def base_template(request):
 
 @login_required(login_url='login')
 def shelf(request):
-    return render(request,'shelf.html')
+    books = BookInstance.objects.all()
+    num_instances = BookInstance.objects.all().count()
+    context = {
+        'Bookinstance_list':books,
+        'num_borrowed_books': num_instances,
+    }
+    return render(request,'shelf.html',context)
 
+@login_required(login_url='login')
+def borrow_book(request):
+    form = Borrowed_books()
+
+    if request.method == 'POST':
+        form = Borrowed_books(request.POST)
+        book_being_borrowed = request.POST['book']
+        if BookInstance.objects.filter(book=book_being_borrowed).exists():
+            messages.error(request,'The book is on loan')
+            return redirect('borrow-book')
+        else:
+            if form.is_valid():
+                book_instance = form.save(commit=False)
+                book_instance.status = 'o'
+                book_instance.save()
+                messages.success(request,"You have successfully borrowed the book")
+                return redirect('shelf')
+            else:
+                messages.error(request,'The information provided is not valid')
+                return redirect('borrow-book')
+    context={'form':form}
+    return render(request,'borrow_book.html',context)
+            
 class BookListView(generic.ListView):
     model = Book
     paginate_by = 2

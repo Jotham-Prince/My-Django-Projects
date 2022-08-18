@@ -6,7 +6,7 @@ from .decorators import unauthenticated_user
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from mysite.models import UserData,Book, Author, BookInstance
+from mysite.models import UserData, Book, Author, BookInstance
 from .forms import NewUserForm, Borrowed_books
 from django.contrib import messages
 from django.contrib.auth import authenticate,login

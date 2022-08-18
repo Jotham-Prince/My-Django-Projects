@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import sys
 import os
 from pathlib import Path
 
@@ -24,7 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!dvirwj1n59523pp7%mdqfm!jz@cvz^9i7-d&o@beb-0lm#bua'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if(len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

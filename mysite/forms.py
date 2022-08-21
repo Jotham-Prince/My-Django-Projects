@@ -39,4 +39,5 @@ class Borrowed_books(forms.ModelForm):
 		super(Borrowed_books,self).__init__(*args, **kwargs)
 
 		self.fields['book'].widget.attrs['class'] = 'borrow_field'
+		self.fields['borrower'].widget.attrs['class'] = 'borrow_field'
 

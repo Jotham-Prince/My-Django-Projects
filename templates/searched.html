@@ -46,7 +46,7 @@
                     {% for book in books %}
                     <figure class="card">
                         <img src="{{book.cover.url}}" />
-                        <figcaption>{{book.title}}</figcaption>
+                        <figcaption id="bookTitle">{{book.title}}</figcaption>
                         <figcaption><a href="{% url 'borrow-book' %}"><button>Borrow</button></a></figcaption>
                     </figure>
                     {% endfor %}

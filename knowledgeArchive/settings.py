@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-!dvirwj1n59523pp7%mdqfm!jz@cvz^9i7-d&o@beb-0lm#bua
 if(len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
     DEBUG = True
 else:
-    DEBUG = True
+    DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'verify_email.apps.VerifyEmailConfig',
+    'storages'
     # my apps
     'mysite',
 ]
@@ -156,3 +157,14 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_ID')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
+
+#S3 BUCKET CONFIGURATION
+
+AWS_ACCESS_KEY_ID = 'AKIA36XEFIOBFE4DSPEV'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'knowledgearchive1-bucket'
+
+AWS_S3_FILE_OVERWRITE = True
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

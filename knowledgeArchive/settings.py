@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'verify_email.apps.VerifyEmailConfig',
-    'storages'
+    'storages',
     # my apps
     'mysite',
 ]

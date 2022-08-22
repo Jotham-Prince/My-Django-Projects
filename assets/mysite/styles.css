@@ -104,6 +104,8 @@ h2:after {
     right: 0;
     background: #373d47;
 }
+
+
 .cards,
 .news {
     flex-flow: row wrap;
@@ -139,6 +141,13 @@ h2:after {
     transition: 0.3s;
     box-shadow: #24282f;
 }
+
+#bookTitle {
+    padding: 70px 20px;
+    font-weight: bolder;
+    color: #bcbfbe;
+}
+
 .cards .card:after,
 .news .card:after {
     content: '';
@@ -191,6 +200,7 @@ h2:after {
     transition: 0.2s;
 }
 .news .article figcaption {
+    margin-top: 40px;
     font-size: 14px;
     text-shadow: 0 1px 0 rgba(51,51,51,0.3);
     color: #fff;
@@ -205,11 +215,16 @@ h2:after {
     transform: scale(1.15);
     transition: 0.2s;
 }
+
 .news .article figcaption h3 {
     color: #3792e3;
     font-size: 16px;
     margin-bottom: 0;
     font-weight: bold;
+}
+.card .bookTitle{
+    margin: top;
+    align-items: center;
 }
 .news .article:hover img,
 .news .article:focus img,
@@ -225,7 +240,6 @@ h2:after {
 }
 
 /* Nav bar */
-
 
 nav {
     order: 1;
@@ -251,6 +265,11 @@ nav {
 
 .nav_links li a:hover {
     color: #3792e3;
+}
+
+#shelf-nav {
+    display: flex;
+    justify-content: flex-start;
 }
 
 button {
@@ -302,9 +321,32 @@ button:hover {
     color: rgb(161, 24, 207);
 }
 
+.container-field {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.form__title {
+    margin-top: 50px;
+    text-align: center;
+    background-color: #24282f;
+    color: #ECE5C7;
+    position: initial;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 50%;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
 .borrow_field {
-    width: 300px;
-    height: 600px;
-    border-radius: 20px;
+    border-radius: 5px;
+    height: 50px;
+    width: 40vw;
+    margin: 10px 30px;
+    border: none;
+    outline: none;
 }
 

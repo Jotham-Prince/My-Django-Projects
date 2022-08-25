@@ -11,10 +11,9 @@
 </head>
 <body>
     <header class="header">
-</div>
         <h1>The Knowledge Archive</h1>
     </header>
-
+<center>
     <div class="container">
         <form action="{% url 'searched' %}" method="post" class="form-container">
             {% csrf_token %}
@@ -45,7 +44,7 @@
     </nav>
 </div>
     <div class="wrapper">
-        <h2><strong> {{num_books}} Recently Added<span></span></strong></h2>
+        <h2><strong> {{num_books}} Recently Added</strong></h2>
         <h3 style="color: blue;">{{num_authors}} Authors</h3>
         <div class="cards">
             {% for Book in Books %}
@@ -58,5 +57,6 @@
         </div>
     </div>
     <script src="{% static 'nav.js' %}"></script>
+</center>
 </body>
 </html>
